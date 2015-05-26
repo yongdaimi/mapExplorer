@@ -2,18 +2,10 @@ package com.yuneec.android.mapexplorer.base;
 
 
 
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.assist.ImageScaleType;
-import com.nostra13.universalimageloader.core.display.BitmapDisplayer;
-import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
-import com.yuneec.android.mapexplorer.ConstantValue;
-import com.yuneec.android.mapexplorer.R;
-import com.yuneec.android.mapexplorer.library.ProgressDialog;
-import com.yuneec.android.mapexplorer.manager.ViewManager;
-import com.yuneec.android.mapexplorer.settings.MyApplication;
-
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -23,8 +15,16 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Toast;
-import android.content.Intent;
-import android.graphics.Bitmap;
+
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.BitmapDisplayer;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
+import com.yuneec.android.mapexplorer.ConstantValue;
+import com.yuneec.android.mapexplorer.R;
+import com.yuneec.android.mapexplorer.library.ProgressDialog;
+import com.yuneec.android.mapexplorer.manager.ViewManager;
+import com.yuneec.android.mapexplorer.settings.MyApplication;
 
 
 /**
@@ -255,5 +255,9 @@ public abstract class BaseActivity extends Activity
 		}
 		// overridePendingTransition(R.anim.right2left_enter,R.anim.left2right_exit);
 	}
+	
+	
+	
+	
 	
 }

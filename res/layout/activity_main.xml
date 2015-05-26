@@ -1,12 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
- 	>
+    android:background="@drawable/fpv_bg"
+    android:splitMotionEvents="false" >
 
-    <TextView
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:clickable="true" />
+
+    <ImageView
+        android:id="@+id/center_pin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:visibility="invisible"
+        android:background="@drawable/sc_map_pin" />
+
+    <TextView
+        android:id="@+id/tv_center_latlng"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"         
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:visibility="invisible"
+        android:background="#AAFFFF00"/>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <RelativeLayout
+            android:id="@id/fpv_video_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true" >
+
+            <TextureView
+                android:id="@id/video_previewer_surface"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center" />
+
+            <ImageView
+                android:id="@id/video_previewer_gray"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:visibility="invisible" />
+
+            <View
+                android:id="@id/fpv_grid_line"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_centerInParent="true"
+                android:visibility="gone" />
+
+            <View
+                android:id="@id/cameraanimview"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:alpha="0.0"
+                android:background="@android:color/black"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@id/fpv_camera_focus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100.0dip"
+                android:background="@drawable/fpv_spot_metering"
+                android:visibility="invisible" />
+
+            <ImageView
+                android:id="@id/fpv_camera_focus_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/fpv_camera_focus"
+                android:layout_marginLeft="@dimen/fpv_spot_margin_left"
+                android:layout_marginTop="@dimen/fpv_spot_margin_top"
+                android:layout_toRightOf="@id/fpv_camera_focus"
+                android:padding="@dimen/fpv_spot_padding"
+                android:src="@drawable/fpv_spot_cancel"
+                android:visibility="invisible" />
+        </RelativeLayout>
+
+        <include
+            android:id="@id/gs_ly"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            layout="@layout/gs_main"
+            android:clickable="true" />
+
+        <!--
+        <RelativeLayout
+            android:id="@id/fpv_window_bg"
+            android:layout_width="@dimen/gs_small_width"
+            android:layout_height="@dimen/gs_small_height"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/fpv_small_bg" >
+
+            <RelativeLayout
+                android:id="@id/gs_small_control"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="2.0dip" >
+
+                <include
+                    android:id="@id/gs_s_lock_ly"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="2.0dip"
+                    android:layout_marginTop="2.0dip"
+                    layout="@layout/gs_small_lock_view" />
+
+                <ImageView
+                    android:id="@id/fpv_map_pitch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_margin="2.0dip"
+                    android:paddingRight="15.0dip"
+                    android:paddingTop="15.0dip"
+                    android:src="@drawable/gs_map_widget_zoom_in" />
+
+                <ImageView
+                    android:id="@id/fpv_map_small_clear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="2.0dip"
+                    android:paddingLeft="15.0dip"
+                    android:paddingTop="15.0dip"
+                    android:src="@drawable/gs_map_widget_earaser" />
+            </RelativeLayout>
+        </RelativeLayout>
+        -->
+
+        <ImageView
+            android:id="@id/fpv_map_toggle_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/fpv_window_bg"
+            android:layout_alignTop="@id/fpv_window_bg"
+            android:layout_margin="2.0dip"
+            android:background="@drawable/gs_map_widget_hide_in" />
+    </RelativeLayout>
+
+    <include
+        android:id="@id/fpv_top_ly"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/fpv_top_view" />
+
+    <include
+        android:id="@id/fpv_leftmenu_ly"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/fpv_top_mid_margin"
+        layout="@layout/map_leftmenu_view" />
+
+    <TextView
+        android:id="@id/fpv_fps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="FPS"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="14.0sp"
+        android:visibility="gone" />
 
 </RelativeLayout>

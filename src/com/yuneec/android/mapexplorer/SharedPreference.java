@@ -25,6 +25,8 @@ public class SharedPreference {
 	private static final String USER_INFO_APPROVE_STATUS = "approveStatus";
 	private static final String USER_INFO_SCORE = "score";
 	private static final String USER_INFO_ADDRESS = "address";
+	
+	
 
 	
 	
@@ -47,6 +49,7 @@ public class SharedPreference {
 		user.setApproveStatus(sharedPreferences.getString(USER_INFO_APPROVE_STATUS, "0"));
 		user.setScore(sharedPreferences.getString(USER_INFO_SCORE, "0"));
 		user.setAddress(sharedPreferences.getString(USER_INFO_ADDRESS, ""));
+		
 		return user;
 	}
 
@@ -69,6 +72,7 @@ public class SharedPreference {
 		editor.putString(USER_INFO_APPROVE_STATUS,user.getApproveStatus());
 		editor.putString(USER_INFO_SCORE,user.getScore());
 		editor.putString(USER_INFO_ADDRESS,user.getAddress());
+		
 		editor.commit();
 	}
 	

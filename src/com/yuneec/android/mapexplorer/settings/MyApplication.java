@@ -3,6 +3,7 @@ package com.yuneec.android.mapexplorer.settings;
 import java.io.File;
 import java.util.LinkedList;
 
+import com.baidu.mapapi.SDKInitializer;
 import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiscCache;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.LruMemoryCache;
@@ -42,6 +43,7 @@ public class MyApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		SDKInitializer.initialize(this);
 		instance = this;
 		mActivityList = new LinkedList<Activity>();
 		context = getApplicationContext();
